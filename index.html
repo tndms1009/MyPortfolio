@@ -1,337 +1,967 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="퍼블리셔 포트폴리오" />
-    <meta name="keywords" content="Publisher, portfolio" />
-    <meta name="author" content="Oh Sueun" />
-    <title>PORTPOLIO_OH_SUEUN</title>
-    <link rel="canonical" href="https://tndms1009.github.io/portfolio/" />
-    <link rel="icon" href="images/icon.jpg" type="image/jpg" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <script src="js/script.js" defer></script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
-  </head>
-  <body>
-    <!-- Your content goes here -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="오수은 웹퍼블리셔 포트폴리오 — HTML/CSS/JS · Vue.js · 8년차">
+  <meta name="keywords" content="웹퍼블리셔, 포트폴리오, HTML, CSS, JavaScript, Vue.js">
+  <meta property="og:title" content="Oh Sueun — Web Publisher Portfolio">
+  <meta property="og:description" content="8년차 웹퍼블리셔 오수은의 포트폴리오입니다.">
+  <title>Oh Sueun — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <header class="header">
-      <h1>PORTPOLIO_<span class="small">@OH_SUEUN</span></h1>
-      <nav>
-        <ul>
-          <li class="button"><button>=</button></li>
-          <li><a href="#section1">PROFIL</a></li>
-          <li><a href="#section2">INFO</a></li>
-          <li><a href="#section3">SKILL</a></li>
-        </ul>
-      </nav>
-      <button id="mode-toggle">다크모드 변경</button>
-    </header>
+    :root {
+      --black: #111111;
+      --gray-900: #1c1c1c;
+      --gray-700: #444444;
+      --gray-500: #888888;
+      --gray-300: #cccccc;
+      --gray-100: #f4f4f2;
+      --gray-50: #fafaf8;
+      --white: #ffffff;
+      --accent: #222222;
+      --border: #e8e8e6;
+      --font-en: 'DM Sans', sans-serif;
+      --font-ko: 'Noto Sans KR', sans-serif;
+    }
 
-    <main class="wrap">
-      <section id="section1" class="container" style="font-weight: 200">
-        <div class="content">
-          <h3 class="hidden">프로필, 경력</h3>
-          <div class="left-cont">
-            <ul class="profile mb-3">
-              <li class="name">
-                <div class="typing_box">
-                  <span class="text"></span><span class="blink"></span>
-                </div>
-              </li>
-              <li class="gray">89.10.09</li>
-              <li class="gray">010.6799.5676</li>
-              <li class="line-txt"><span>tndms1009@naver.com</span></li>
-              <li class="gray">서울 영등포구</li>
-            </ul>
-            <!--<p class="bg01 rotate">
-                    <img src="images/me.png" alt="나">
-                </p>-->
-          </div>
-          <div class="right-cont">
-            <dl class="info mb-3">
-              <dt>교육/학력</dt>
-              <dd>22.04.19(3개월) [프론트엔드개발]리액트 자바스크립트 수료</dd>
-              <dd>
-                15.09.16(6개월) 웹퍼블리셔 기반의 프론트엔드 개발자 취업과정
-                수료
-              </dd>
-              <dd>12.02 공주대학교(산림자원학과) 졸업</dd>
-              <dd>08.02 서귀포여자고등학교 졸업</dd>
-            </dl>
-            <dl class="info">
-              <dt>경력</dt>
-              <dd>13.07 ~ 15.07(2년 1개월) 아데나소프트 일반 사무직</dd>
-              <dd>16.03 ~ 16.11 (9개월) 브리치 웹퍼블리셔</dd>
-              <dd>
-                2016.12 ~ 2024.07(7년 8개월) 에스티유니타스
-                웹퍼블리셔/프론트엔드/개발
-              </dd>
-            </dl>
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-ko);
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-en);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-en);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--gray-500);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--black); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--black);
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      padding: 100px 40px 80px;
+      max-width: 860px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 20px;
+    }
+
+    .hero-name {
+      font-family: var(--font-en);
+      font-size: clamp(48px, 8vw, 80px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+
+    .hero-name-ko {
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 500;
+      color: var(--gray-500);
+      margin-bottom: 28px;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--gray-700);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 36px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .tag {
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--gray-700);
+      background: var(--white);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .hero-contacts a {
+      font-family: var(--font-en);
+      font-size: 13px;
+      color: var(--gray-500);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .hero-contacts a:hover { color: var(--black); }
+
+    .hero-contacts a svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    /* ── SECTION COMMON ── */
+    section {
+      padding: 80px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      font-family: var(--font-en);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray-300);
+      min-width: 60px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: -0.01em;
+    }
+
+    /* ── CAREER ── */
+    .career-list { max-width: 680px; }
+
+    .career-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 0 24px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .career-item:last-child { border-bottom: 1px solid var(--border); }
+
+    .career-period {
+      font-family: var(--font-en);
+      font-size: 12px;
+      color: var(--gray-500);
+      padding-top: 3px;
+      line-height: 1.5;
+    }
+
+    .career-company {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .career-role {
+      font-size: 13px;
+      color: var(--gray-500);
+      margin-bottom: 10px;
+    }
+
+    .career-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .career-bullets li {
+      font-size: 13px;
+      color: var(--gray-700);
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .career-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gray-300);
+      font-size: 11px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 780px;
+    }
+
+    .skill-cell {
+      background: var(--white);
+      padding: 24px 20px;
+    }
+
+    .skill-cell-label {
+      font-family: var(--font-en);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-300);
+      margin-bottom: 12px;
+    }
+
+    .skill-names {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .skill-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .skill-name {
+      font-family: var(--font-en);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    .skill-bar-wrap {
+      width: 80px;
+      height: 2px;
+      background: var(--gray-100);
+      border-radius: 1px;
+    }
+
+    .skill-bar {
+      height: 2px;
+      background: var(--black);
+      border-radius: 1px;
+    }
+
+    /* ── WORKS ── */
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .work-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+      background: var(--white);
+    }
+
+    .work-card:hover {
+      border-color: var(--gray-500);
+      transform: translateY(-2px);
+    }
+
+    .work-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      background: var(--gray-100);
+    }
+
+    .work-thumb-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .work-thumb-placeholder span {
+      font-family: var(--font-en);
+      font-size: 11px;
+      color: var(--gray-300);
+      letter-spacing: 0.06em;
+    }
+
+    .work-body {
+      padding: 20px 22px 22px;
+    }
+
+    .work-type {
+      font-family: var(--font-en);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-300);
+      margin-bottom: 6px;
+    }
+
+    .work-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+
+    .work-desc {
+      font-size: 13px;
+      color: var(--gray-700);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .work-tag {
+      font-family: var(--font-en);
+      font-size: 10px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: var(--gray-100);
+      color: var(--gray-700);
+    }
+
+    .work-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 14px;
+      font-family: var(--font-en);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gray-500);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .work-link:hover { color: var(--black); border-color: var(--black); }
+
+    .work-link svg {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: 780px;
+    }
+
+    .about-item-label {
+      font-family: var(--font-en);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-300);
+      margin-bottom: 8px;
+    }
+
+    .about-item-value {
+      font-size: 14px;
+      color: var(--gray-700);
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT ── */
+    .contact-inner { max-width: 500px; }
+
+    .contact-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-desc {
+      font-size: 14px;
+      color: var(--gray-500);
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-family: var(--font-en);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 2px solid var(--black);
+      padding-bottom: 2px;
+      margin-bottom: 32px;
+      transition: opacity 0.2s;
+    }
+
+    .contact-email:hover { opacity: 0.5; }
+
+    .contact-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-meta span {
+      font-size: 13px;
+      color: var(--gray-500);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-family: var(--font-en);
+      font-size: 11px;
+      color: var(--gray-300);
+    }
+
+    .footer-top {
+      font-family: var(--font-en);
+      font-size: 11px;
+      color: var(--gray-300);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-top:hover { color: var(--black); }
+
+    /* ── DARK MODE ── */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --black: #f0f0ee;
+        --gray-900: #e0e0de;
+        --gray-700: #aaaaaa;
+        --gray-500: #666666;
+        --gray-300: #444444;
+        --gray-100: #1e1e1c;
+        --gray-50: #161614;
+        --white: #111111;
+        --border: #2a2a28;
+      }
+      nav { background: rgba(17,17,17,0.92); }
+      .work-thumb-placeholder { background: #1e1e1c; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 20px;
+        gap: 16px;
+      }
+      .nav-toggle { display: flex; }
+
+      #hero, section { padding: 60px 20px; }
+
+      .career-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      footer { flex-direction: column; gap: 8px; padding: 24px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .works-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── FADE-IN ANIMATION ── */
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">OH SUEUN</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#career">Career</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" aria-label="소개">
+    <p class="hero-eyebrow">Web Publisher · Front-end Developer</p>
+    <h1 class="hero-name">Oh Sueun</h1>
+    <p class="hero-name-ko">오 수 은</p>
+    <p class="hero-desc">
+      8년차 웹퍼블리셔로 교육 플랫폼, 쇼핑몰, 어드민 시스템 등 다양한 서비스를 구축했습니다. 웹 접근성과 웹 표준을 기반으로 깔끔하고 유지보수하기 좋은 마크업을 만듭니다.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">HTML5</span>
+      <span class="tag">CSS3</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">jQuery</span>
+      <span class="tag">Vue.js</span>
+      <span class="tag">반응형 웹</span>
+      <span class="tag">웹 접근성</span>
+      <span class="tag">Figma</span>
+    </div>
+    <div class="hero-contacts">
+      <a href="mailto:tndms1009@naver.com">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        tndms1009@naver.com
+      </a>
+      <a href="tel:01067995676">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 0118 3h.01a2 2 0 012 2.18v3a2 2 0 01-1.44 1.93 16 16 0 00-6.36 6.36A2 2 0 0122 16.92z"/></svg>
+        010-6799-5676
+      </a>
+      <a href="https://github.com/tndms1009" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- CAREER -->
+  <section id="career" aria-label="경력">
+    <div class="section-header fade-in">
+      <span class="section-label">01</span>
+      <h2 class="section-title">Career</h2>
+    </div>
+    <div class="career-list">
+      <div class="career-item fade-in">
+        <div class="career-period">2016.12<br>— 2024.07</div>
+        <div>
+          <p class="career-company">에스티유니타스</p>
+          <p class="career-role">웹퍼블리셔 / 프론트엔드 개발 · 7년 8개월</p>
+          <ul class="career-bullets">
+            <li>공단기, 경찰단기 등 교육 플랫폼 PC/모바일 퍼블리싱</li>
+            <li>메인 개편, 이벤트 페이지, 고객센터 리뉴얼 퍼블 작업</li>
+            <li>Vue.js 기반 어드민 프론트엔드 개발</li>
+            <li>PHP 백엔드 어드민 리뉴얼 개발</li>
+          </ul>
+        </div>
+      </div>
+      <div class="career-item fade-in">
+        <div class="career-period">2016.03<br>— 2016.11</div>
+        <div>
+          <p class="career-company">브리치</p>
+          <p class="career-role">웹퍼블리셔 · 9개월</p>
+          <ul class="career-bullets">
+            <li>웹 서비스 퍼블리싱 및 유지보수</li>
+          </ul>
+        </div>
+      </div>
+      <div class="career-item fade-in">
+        <div class="career-period">2013.07<br>— 2015.07</div>
+        <div>
+          <p class="career-company">아데나소프트</p>
+          <p class="career-role">일반 사무직 · 2년 1개월</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 60px;">
+      <div class="section-header fade-in" style="margin-bottom: 32px;">
+        <span class="section-label" style="visibility:hidden">01</span>
+        <h2 class="section-title" style="font-size:18px;">Education</h2>
+      </div>
+      <div class="career-list">
+        <div class="career-item fade-in">
+          <div class="career-period">2022.04</div>
+          <div>
+            <p class="career-company" style="font-size:14px;">리액트 자바스크립트 프론트엔드 개발 과정</p>
+            <p class="career-role">수료 · 3개월</p>
           </div>
         </div>
-      </section>
-      <section id="section2" class="container" style="font-weight: 400">
-        <div class="content">
-          <h3 class="hidden">주요 경력</h3>
-          <div class="left-cont">
-            <dl class="info mb-3">
-              <dt>주요 작업</dt>
-              <dd>- 쇼핑몰 O2O 서비스 기반의 홈페이지 구축 및 유지보수</dd>
-              <dd>- 온라인 기반의 교육 콘텐츠 사이트 구축 및 유지보수</dd>
-              <dd>- 웹 접근성 / 웹 표준에 의한 퍼블리싱 작업</dd>
-              <dd>- vue.js 어드민 프론트 작업</dd>
-              <dd>- 어드민 리뉴얼 php 백엔드 개발 작업</dd>
-            </dl>
-          </div>
-          <div class="right-cont">
-            <dl class="info">
-              <dt>사용 언어 & 기술</dt>
-              <dd>* html5, css, javascript, vue.js, php, ajax, MySQL</dd>
-              <dd>* GitLab, github</dd>
-              <dd>* bootstrap, TableExport, Figma, Zeplin</dd>
-            </dl>
-          </div>
-          <div class="skills">
-            <div class="chart doughnut1">
-              <span class="center">95%</span>
-              <span class="txt">html</span>
-            </div>
-            <div class="chart doughnut2">
-              <span class="center">95%</span>
-              <span class="txt">css</span>
-            </div>
-            <div class="chart doughnut3">
-              <span class="center">85%</span>
-              <span class="txt">Javascript & jQuery</span>
-            </div>
-            <div class="chart doughnut4">
-              <span class="center">30%</span>
-              <span class="txt">php, ajax, MySQL</span>
-            </div>
-            <div class="chart doughnut5">
-              <span class="center">30%</span>
-              <span class="txt">vue.js</span>
-            </div>
+        <div class="career-item fade-in">
+          <div class="career-period">2015.09</div>
+          <div>
+            <p class="career-company" style="font-size:14px;">웹퍼블리셔 기반 프론트엔드 개발자 취업과정</p>
+            <p class="career-role">수료 · 6개월</p>
           </div>
         </div>
-      </section>
-      <section id="section3" class="container" style="font-weight: 600">
-        <div class="content">
-          <h3 class="hidden">작업물</h3>
-          <!-- Swiper -->
-          <div class="swiper-container mySwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="images/pc01.jpg" alt="공단기 pc 이미지" />
-                  </div>
-                  <div class="txt-box">
-                    <span class="title">공단기 PC</span>
-                    <dl class="cont">
-                      <dt>* 주요작업</dt>
-                      <dd>
-                        메인개편 퍼블작업,<br />
-                        이벤트 페이지 퍼블작업,<br />
-                      </dd>
-                      <dt class="eng">* SKILL</dt>
-                      <dd>
-                        사용언어 : html5, css, javascript, jQuery<br />
-                        버전관리 : GitLab<br />
-                        기타 : Figma
-                      </dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="images/mo01.jpg" alt="공단기 모바일 이미지" />
-                  </div>
-                  <div class="txt-box">
-                    <span class="title">공단기 모바일</span>
-                    <dl class="cont">
-                      <dt>* 주요작업</dt>
-                      <dd>
-                        메인개편 퍼블작업,<br />
-                        이벤트 페이지 퍼블작업,<br />
-                        고객섬김센터 리뉴얼 퍼블작업
-                      </dd>
-                      <dt class="eng">* SKILL</dt>
-                      <dd>
-                        사용언어 : html5, css, javascript, jQuery, 미디어쿼리<br />
-                        버전관리 : GitLab<br />
-                        기타 : Figma
-                      </dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="images/pc02.jpg" alt="고객섬김센터 이미지" />
-                  </div>
-                  <div class="txt-box">
-                    <span class="title">고객섬김센터 PC, 모바일</span>
-                    <dl class="cont">
-                      <dt>* 주요작업</dt>
-                      <dd>
-                        고객섬김센터 리류얼 작업 : <br />
-                        1:1 문의 리스트 페이지,<br />
-                        글쓰기 페이지,<br />
-                        공지사항 등 게시판 리스트 페이지 <br />
-                        퍼블리싱 작업(기어도 100%)
-                      </dd>
-                      <dt class="eng">* SKILL</dt>
-                      <dd>
-                        사용언어 : html5, css, javascript, jQuery, 미디어쿼리<br />
-                        버전관리 : GitLab<br />
-                        기타 : Figma
-                      </dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="images/pc03.jpg" alt="문제은행 이미지" />
-                  </div>
-                  <div class="txt-box">
-                    <span class="title">문제은행(2022)</span>
-                    <dl class="cont">
-                      <dt>* 주요작업</dt>
-                      <dd>
-                        어드민페이지 프론트 작업 : <br />
-                        - 메타데이터 관리 어드민 페이지 프론트<br />
-                        (기여도 100%,)<br />
-                        - 문제지 조회 리스트 페이지, <br />
-                        이력관리 페이지 프론트 작업(100%)<br />
-                      </dd>
-                      <dt class="eng">* SKILL</dt>
-                      <dd>
-                        사용언어 : vue.js, php, MySQL, html5, javascript<br />
-                        버전관리 : GitLab<br />
-                        기타 : Figma, bootstrap, tinymce 에디터, TableExport
-                      </dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="box">
-                  <div class="img-box">
-                    <img
-                      src="images/pc04.jpg"
-                      alt="모바일 위젯 어드민 이미지"
-                    />
-                  </div>
-                  <div class="txt-box">
-                    <span class="title">모바일 위젯 어드민 작업(2022)</span>
-                    <dl class="cont">
-                      <dt>* 주요작업</dt>
-                      <dd>
-                        어드민페이지 프론트 작업 : <br />
-                        - 조회 리스트 페이지 프론트 (기여도 100%)<br />
-                        - 수정 페이지 프론트 (기여도 50%)<br />
-                        - 계정 관리 페이지 (기여도 80%)
-                      </dd>
-                      <dt class="eng">* SKILL</dt>
-                      <dd>
-                        사용언어 : vue.js, php, MySQL, html5, javascript<br />
-                        버전관리 : GitLab<br />
-                        기타 : Figma, bootstrap, tinymce 에디터,
-                      </dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="images/pc05.png" alt="에듀플렉스 작업 이미지" />
-                  </div>
-                  <div class="txt-box">
-                    <span class="title"
-                      >에듀플렉스 리포트 html, pc페이지 작업(프리)</span
-                    >
-                    <dl class="cont">
-                      <dt>* 주요작업</dt>
-                      <dd>
-                        설문 결과 리포트 html 작업(퍼블리싱 100%)<br />
-                        : PDF형식의 인쇄물 html 작업<br />
-                        리포트 설문 pc 페이지 작업(퍼블리싱 100%)
-                      </dd>
-                      <dt class="eng">* SKILL</dt>
-                      <dd>
-                        사용언어 : html5, css, javascript, jQuery<br />
-                        기타 : Figma
-                      </dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="box">
-                  <div class="img-box">
-                    <a href="https://dmoments.co.kr/" target="_blank">
-                      <img
-                        src="images/dmoments.jpg"
-                        alt="에듀플렉스 작업 이미지"
-                      />
-                    </a>
-                  </div>
-                  <div class="txt-box">
-                    <span class="title"
-                      >결정적E순간 pc페이지, 모바일페이지 반응형
-                      작업(프리)</span
-                    >
-                    <dl class="cont">
-                      <dt>* 주요작업</dt>
-                      <dd>
-                        초기 사이트 퍼블부터 유지보수까지 퍼블 작업 기어도
-                        100%<br />
-                        반응형 웹사이트 퍼블작업
-                      </dd>
-                      <dt class="eng">* SKILL</dt>
-                      <dd>
-                        사용언어 : html5, css, javascript, jQuery<br />
-                        기타 : Figma, github
-                      </dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
+        <div class="career-item fade-in">
+          <div class="career-period">2012.02</div>
+          <div>
+            <p class="career-company" style="font-size:14px;">공주대학교</p>
+            <p class="career-role">산림자원학과 졸업</p>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-      <p>&copy; 2024 Oh Sueun. All rights reserved.</p>
-    </footer>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  </body>
+  <!-- SKILLS -->
+  <section id="skills" aria-label="스킬">
+    <div class="section-header fade-in">
+      <span class="section-label">02</span>
+      <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="skills-grid fade-in">
+      <div class="skill-cell">
+        <p class="skill-cell-label">Markup</p>
+        <div class="skill-names">
+          <div class="skill-row">
+            <span class="skill-name">HTML5</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">CSS3</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">반응형 미디어쿼리</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <p class="skill-cell-label">Scripting</p>
+        <div class="skill-names">
+          <div class="skill-row">
+            <span class="skill-name">JavaScript</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">jQuery</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">Vue.js</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:30%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <p class="skill-cell-label">Backend</p>
+        <div class="skill-names">
+          <div class="skill-row">
+            <span class="skill-name">PHP</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:30%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">AJAX</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:30%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">MySQL</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:30%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <p class="skill-cell-label">Tools</p>
+        <div class="skill-names">
+          <div class="skill-row">
+            <span class="skill-name">Figma / Zeplin</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">Git / GitLab</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">Bootstrap</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section id="works" aria-label="작업물">
+    <div class="section-header fade-in">
+      <span class="section-label">03</span>
+      <h2 class="section-title">Works</h2>
+    </div>
+    <div class="works-grid">
+
+      <article class="work-card fade-in">
+        <img src="images/pc01.jpg" alt="공단기 PC 메인 화면" class="work-thumb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="work-thumb-placeholder" style="display:none"><span>공단기 PC</span></div>
+        <div class="work-body">
+          <p class="work-type">Education Platform</p>
+          <h3 class="work-title">공단기 PC · 모바일</h3>
+          <p class="work-desc">공무원 교육 플랫폼 메인 개편 및 이벤트 페이지 퍼블리싱. PC/모바일 반응형 작업.</p>
+          <div class="work-tags">
+            <span class="work-tag">HTML5</span>
+            <span class="work-tag">CSS3</span>
+            <span class="work-tag">JavaScript</span>
+            <span class="work-tag">jQuery</span>
+            <span class="work-tag">Figma</span>
+            <span class="work-tag">GitLab</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-card fade-in">
+        <img src="images/pc02.jpg" alt="고객섬김센터 화면" class="work-thumb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="work-thumb-placeholder" style="display:none"><span>고객섬김센터</span></div>
+        <div class="work-body">
+          <p class="work-type">Customer Service</p>
+          <h3 class="work-title">고객섬김센터 리뉴얼</h3>
+          <p class="work-desc">1:1문의, 공지사항 게시판 등 고객센터 전체 리뉴얼 퍼블리싱 (기여도 100%). 미디어쿼리 반응형 적용.</p>
+          <div class="work-tags">
+            <span class="work-tag">HTML5</span>
+            <span class="work-tag">CSS3</span>
+            <span class="work-tag">jQuery</span>
+            <span class="work-tag">미디어쿼리</span>
+            <span class="work-tag">Figma</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-card fade-in">
+        <img src="images/pc03.jpg" alt="문제은행 어드민 화면" class="work-thumb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="work-thumb-placeholder" style="display:none"><span>문제은행 어드민</span></div>
+        <div class="work-body">
+          <p class="work-type">Admin · 2022</p>
+          <h3 class="work-title">문제은행 어드민</h3>
+          <p class="work-desc">메타데이터 관리, 문제지 조회, 이력관리 어드민 페이지 프론트엔드 개발 (기여도 100%).</p>
+          <div class="work-tags">
+            <span class="work-tag">Vue.js</span>
+            <span class="work-tag">PHP</span>
+            <span class="work-tag">MySQL</span>
+            <span class="work-tag">Bootstrap</span>
+            <span class="work-tag">TinyMCE</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-card fade-in">
+        <img src="images/pc04.jpg" alt="모바일 위젯 어드민 화면" class="work-thumb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="work-thumb-placeholder" style="display:none"><span>위젯 어드민</span></div>
+        <div class="work-body">
+          <p class="work-type">Admin · 2022</p>
+          <h3 class="work-title">모바일 위젯 어드민</h3>
+          <p class="work-desc">조회 리스트, 수정 페이지, 계정 관리 어드민 프론트엔드 개발.</p>
+          <div class="work-tags">
+            <span class="work-tag">Vue.js</span>
+            <span class="work-tag">PHP</span>
+            <span class="work-tag">MySQL</span>
+            <span class="work-tag">Bootstrap</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-card fade-in">
+        <img src="images/pc05.png" alt="에듀플렉스 리포트 화면" class="work-thumb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="work-thumb-placeholder" style="display:none"><span>에듀플렉스</span></div>
+        <div class="work-body">
+          <p class="work-type">Freelance · Report</p>
+          <h3 class="work-title">에듀플렉스 리포트 · 설문 페이지</h3>
+          <p class="work-desc">PDF 형식 인쇄물 HTML 마크업 및 설문 결과 리포트 PC 페이지 퍼블리싱 (기여도 100%).</p>
+          <div class="work-tags">
+            <span class="work-tag">HTML5</span>
+            <span class="work-tag">CSS3</span>
+            <span class="work-tag">JavaScript</span>
+            <span class="work-tag">jQuery</span>
+            <span class="work-tag">Figma</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-card fade-in">
+        <a href="https://dmoments.co.kr/" target="_blank" rel="noopener" style="display:block; color:inherit; text-decoration:none;">
+          <img src="images/dmoments.jpg" alt="결정적E순간 웹사이트 화면" class="work-thumb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="work-thumb-placeholder" style="display:none"><span>결정적E순간</span></div>
+        </a>
+        <div class="work-body">
+          <p class="work-type">Freelance · 반응형</p>
+          <h3 class="work-title">결정적E순간</h3>
+          <p class="work-desc">초기 사이트 구축부터 유지보수까지 전담 (기여도 100%). PC/모바일 반응형 웹사이트.</p>
+          <div class="work-tags">
+            <span class="work-tag">HTML5</span>
+            <span class="work-tag">CSS3</span>
+            <span class="work-tag">jQuery</span>
+            <span class="work-tag">반응형</span>
+            <span class="work-tag">GitHub</span>
+          </div>
+          <a href="https://dmoments.co.kr/" target="_blank" rel="noopener" class="work-link">
+            사이트 바로가기
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" aria-label="연락처">
+    <div class="section-header fade-in">
+      <span class="section-label">04</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-inner fade-in">
+      <p class="contact-title">같이 일해요.</p>
+      <p class="contact-desc">새로운 기회나 프로젝트 제안은 언제든 환영합니다. 메일 주시면 빠르게 답장드리겠습니다.</p>
+      <a href="mailto:tndms1009@naver.com" class="contact-email">tndms1009@naver.com</a>
+      <div class="contact-meta">
+        <span>서울 영등포구 거주</span>
+        <span>010-6799-5676</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2025 Oh Sueun. All rights reserved.</span>
+    <a href="#hero" class="footer-top">↑ Top</a>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    }
+  </script>
+</body>
 </html>
